@@ -9,4 +9,4 @@
 - JavaScript
 
 ## 執行方式
-下載專案後，直接開啟 `dashboard.html` 即可查看頁面。
+下載專案後，直接開啟 `index.html` 即可查看頁面。
