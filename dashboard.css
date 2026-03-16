@@ -1,0 +1,740 @@
+/* ===== 全域設定 ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f4f7f8;
+    color: #1f2937;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ===== 整體版面配置 ===== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ===== 側邊導覽列 (Sidebar) ===== */
+.sidebar {
+    width: 260px;
+    background: #235c61;
+    color: white;
+    padding: 24px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 系統標題 */
+.sidebar__brand h1 {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    white-space: nowrap;
+}
+
+.sidebar__brand p {
+    font-size: 14px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* 導覽列 */
+.sidebar__nav {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 500;
+}
+
+/* 導覽連結 */
+.sidebar__nav a {
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.86);
+    transition: 0.2s ease;
+}
+
+/* Hover ＆ Active  */
+.sidebar__nav a:hover,
+.sidebar__nav a.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+    font-weight: 600;
+}
+
+/* 登出按鈕 */
+.logout-btn {
+    margin-top: auto;
+    border: none;
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+
+/* ===== 主要內容 (Main Content) ===== */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ===== 頁面頂部導覽列 (Header) ===== */
+.header {
+    background: white;
+    padding: 18px 28px;
+    border-bottom: 1px solid #e5eaec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== 漢堡按鈕樣式 (預設 none) ===== */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #afafaf;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* 搜尋區塊 */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-input {
+    width: 320px;
+    padding: 10px 14px;
+    border: 1px solid #cfd8dc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #235c61;
+    box-shadow: 0 0 0 3px rgba(35, 92, 97, 0.12);
+}
+
+.search-btn {
+    padding: 10px 16px;
+    border: none;
+    background: #235c61;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.search-btn:hover {
+    background: #1e4e52;
+}
+
+/* 使用者資訊區 */
+.header__user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* 通知 icon */
+.notification-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    position: relative;
+    color: #5f6368;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-radius: 50%;
+}
+
+.notification-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #235c61;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background-color: #d9534f;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+/* 使用者資訊 */
+.user-info strong {
+    font-size: 14px;
+}
+
+.user-info p {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+
+/* ===== 內容區塊 ===== */
+.content {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+/* ===== 卡片樣式  ===== */
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(35, 92, 97, 0.06);
+}
+
+
+/* ===== Dashboard 概要卡片 ===== */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+.card-value {
+    font-size: 36px;
+    margin-top: 10px;
+    font-weight: 700;
+    color: #235c61;
+}
+
+/* 不同狀態的顏色 */
+.card-value.blue {
+    color: #235c61;
+}
+
+.card-value.orange {
+    color: #b96a16;
+}
+
+.card-value.red {
+    color: #b54747;
+}
+
+.card-value.green {
+    color: #2f7a4b;
+}
+
+.card-subtext {
+    display: inline-block;
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* ===== 主面板區域 ===== */
+.panel-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+/* 右側面板 */
+.side-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 區塊標題列 */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.section-header h3 {
+    font-size: 20px;
+    color: #1f2937;
+}
+
+.section-header a {
+    font-size: 14px;
+    color: #235c61;
+}
+
+
+/* ===== 課程列表區 ===== */
+.course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-item h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: #1f2937;
+}
+
+.course-item p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+/* ===== 模擬進度條 ===== */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #dde5e7;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #235c61;
+    border-radius: 999px;
+}
+
+/* 進度條顏色變化 */
+.red-fill {
+    background: #5f8b8f;
+}
+
+/* 不同進度比例 */
+.w-50 {
+    width: 50%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+
+/* ===== 狀態標籤 (Status Badge) ===== */
+.status {
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status--green {
+    background: #e8f5ee;
+    color: #2f7a4b;
+}
+
+.status--orange {
+    background: #fff4e5;
+    color: #b96a16;
+}
+
+.status--red {
+    background: #fdecec;
+    color: #b54747;
+}
+
+
+/* ===== 資訊卡片  ===== */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-box {
+    background: #f8fbfb;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #edf2f3;
+}
+
+.info-box strong {
+    color: #1f2937;
+    font-size: 15px;
+}
+
+.info-box p {
+    font-size: 14px;
+    color: #b96a16;
+    margin-top: 6px;
+}
+
+
+/* ===== 公告列表 ===== */
+.notice-list {
+    padding-left: 18px;
+    color: #4b5563;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ===== 評鑑紀錄表格 ===== */
+.table-panel {
+    overflow-x: auto;
+}
+
+.record-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.record-table thead {
+    background: #f8fbfb;
+}
+
+/* 表格列 hover 效果 */
+.record-table tbody tr:hover {
+    background: #f9fcfc;
+}
+
+.record-table th,
+.record-table td {
+    text-align: left;
+    padding: 14px 10px;
+    border-bottom: 1px solid #e5eaec;
+    font-size: 14px;
+}
+
+.record-table th {
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.record-table td {
+    color: #374151;
+}
+
+
+/* ===== 側邊選單互動  ===== */
+
+/* 主選單連結 */
+.nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 選單項目容器 */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 子選單 */
+.submenu {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+/* 展開狀態 */
+.nav-item.open .submenu {
+    max-height: 120px;
+    opacity: 1;
+}
+
+/* 箭頭動畫 */
+.arrow {
+    transition: transform 0.25s ease;
+}
+
+.nav-item.open .arrow {
+    transform: rotate(180deg);
+}
+
+/* 子選單連結 */
+.submenu a {
+    padding: 8px 14px 8px 30px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.submenu a:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
+}
+
+
+/* ===== RWD  ===== */
+
+@media (max-width: 1280px) {
+
+    /* Dashboard 卡片兩欄 */
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 主面板單欄 */
+    .panel-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .layout {
+        display: block;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 3000;
+        width: 42px;
+        height: 42px;
+        background: #235c61;
+        border-radius: 8px;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 4px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    /* Hover */
+    .menu-toggle:hover {
+        background-color: #347d84;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        transform: scale(1.05);
+    }
+
+    .menu-toggle:active {
+        transform: scale(0.95);
+    }
+
+    .menu-toggle.active:hover {
+        background-color: #2e778d;
+    }
+
+    .menu-toggle span {
+        width: 20px;
+        height: 2px;
+        background-color: #ffffff;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    /* Header 左側固定按鈕留空 (padding-left) */
+    .header {
+        display: flex;
+        align-items: center;
+        padding: 0 16px 0 70px;
+        height: 72px;
+        gap: 12px;
+        background: white;
+    }
+
+    /* 搜尋區塊 */
+    .search-box {
+        display: flex;
+        flex: 1;
+        align-items: center;
+    }
+
+    .search-input {
+        height: 42px;
+        width: 100%;
+        border-radius: 8px 0 0 8px;
+        font-size: 14px;
+        padding: 0 12px;
+        border: 1px solid #cfd8dc;
+        border-right: none;
+    }
+
+    .search-btn {
+        height: 42px;
+        padding: 0 16px;
+        border-radius: 0 8px 8px 0;
+        white-space: nowrap;
+        background: #235c61;
+        color: white;
+        border: none;
+    }
+
+    /* 使用者資訊簡化 */
+    .header__user {
+        margin-left: auto;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 260px;
+        height: 100vh;
+        z-index: 2000;
+        padding-top: 80px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1500;
+    }
+
+    /* 按鈕 X 動畫 */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* 內容與卡片響應式 */
+    .content {
+        padding: 16px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+
+/* ===== 頁尾 footer ===== */
+.content-footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #e0e6e7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #7f8c8d;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #7f8c8d;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #235c61;
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #2f7a4b;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+/* 手機版垂直排列 */
+@media (max-width: 768px) {
+    .content-footer {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+}
